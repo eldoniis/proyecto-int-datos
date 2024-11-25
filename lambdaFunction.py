@@ -32,15 +32,10 @@ def lambda_handler(event, context):
 
 def send_to_kinesis(data, partition_key):
     kinesis = boto3.client('kinesis')
-    data = {
-      "user_id": "068a4d2a-2593-46d4-ad9d-325235f8555d",
-      "reel_id": "e449b8cc-3c82-45f8-8f87-76433582e382",
-      "action": "comment"
-    }
     try:
         response = kinesis.put_record(
             StreamName="ReelsInteractionsStream",
-            Data=json.dumps(data),  # Convert dict to JSON string
+            Data=json.dumps(data),
             PartitionKey=partition_key
         )
     except Exception as e:
