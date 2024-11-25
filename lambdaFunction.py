@@ -40,5 +40,4 @@ def send_to_kinesis(data, partition_key):
         )
     except Exception as e:
         print("Error sending data to Kinesis:", e)
-        
-send_to_kinesis(1234, "12341")
+
